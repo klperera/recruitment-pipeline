@@ -1,0 +1,44 @@
+package org.example.backend.Service;
+
+import org.example.backend.Model.Candidate;
+import org.example.backend.Model.Stage;
+import org.example.backend.Repository.CandidateRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+
+@Service
+public class CandidateService {
+
+    private final CandidateRepository candidateRepository;
+
+    @Autowired
+    public CandidateService(CandidateRepository candidateRepository) {
+        this.candidateRepository = candidateRepository;
+    }
+
+    public List<Candidate> getAllCandidates() {
+        return candidateRepository.findAll();
+    }
+    public List<Candidate> getAllCandidatesByStage(Stage stage) {
+        return candidateRepository.findAllByStage(stage);
+    }
+
+    public Candidate getById(int id) {
+        return candidateRepository.findCandidateById(id);
+    }
+
+    public Candidate createCandidate(Candidate candidate) {
+        return candidateRepository.save(candidate);
+    }
+
+    public Candidate updateCandidate(Long id, Candidate updated) {
+        return null;
+    }
+
+    public void deleteCandidate(Long id) {
+    }
+
+}
+

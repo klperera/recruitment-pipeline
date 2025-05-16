@@ -22,11 +22,11 @@ public class CandidateController {
 
     @GetMapping
     public List<Candidate> getAllCandidates(@RequestBody(required = false)Stage stage) {
-        return stage == null? candidateService.getAllCandidates(stage) : candidateService.getAllCandidatesByStage(stage);
+        return stage == null? candidateService.getAllCandidates() : candidateService.getAllCandidatesByStage(stage);
     }
 
     @GetMapping("/{id}")
-    public Candidate getById(@RequestBody Long id) {
+    public Candidate getById(@RequestBody int id) {
         return candidateService.getById(id);
     }
 
