@@ -52,8 +52,8 @@ public class CandidateController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Response> updateCandidate(@RequestBody int id, @RequestBody Candidate updated) {
-        return candidateService.updateCandidate(id, updated);
+    public ResponseEntity<Response> updateCandidate(@RequestBody Candidate updated) {
+        return candidateService.updateCandidate(updated.getCandidateID(), updated);
     }
 
     @DeleteMapping("/{id}")
