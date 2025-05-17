@@ -11,6 +11,5 @@ import java.util.Optional;
 public interface CandidateRepository extends JpaRepository<Candidate, Integer> {
     List<Candidate> findAllByStage(String stage);
 
-    Optional<Candidate> findByCandidateID(int id);
     Optional<Candidate> findByName(String name);
 }

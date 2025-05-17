@@ -40,7 +40,7 @@ public class CandidateController {
     }
 
     @GetMapping("/{id}")
-    public Candidate getById(@RequestBody int id) {
+    public ResponseEntity<Response> getById(@RequestBody int id) {
         return candidateService.getById(id);
     }
 

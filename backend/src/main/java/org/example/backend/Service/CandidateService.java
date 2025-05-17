@@ -35,27 +35,35 @@ public class CandidateService {
                 .body(response);
     }
 
-    public Candidate getById(int id) {
-        if (candidateRepository.existsById(id)) {
-            return candidateRepository.findByCandidateID(id).get();
+    public ResponseEntity<Response> getById(int id) {
+        Optional<Candidate> candidate = candidateRepository.findById(id);
+        Response response;
+        if (candidate.isPresent()) {
+            response = new Response(candidate.get(), "Getting ID: " + candidate.get().getCandidateID() +" candidate");
+            return ResponseEntity
+                    .status(HttpStatus.OK)
+                    .body(response);
         }
         else {
-            return new Candidate();
+            response = new Response(new Candidate(), "ID: " + id + " candidate not found");
+            return ResponseEntity
+                    .status(HttpStatus.NOT_FOUND)
+                    .body(response);
         }
     }
 
     public ResponseEntity<Response> createCandidate(Candidate user) {
-        System.out.println(user);
         Optional<Candidate> candidate = candidateRepository.findByName(user.getName());
+        Response response;
         if (candidate.isPresent()) {
-            Response response = new Response(candidate.get(),"Candidate already exists");
+            response = new Response(candidate.get(),"Candidate already exists");
             return ResponseEntity
                     .status(HttpStatus.CONFLICT)
                     .body(response);
         }
         else{
             candidateRepository.save(user);
-            Response response = new Response(user,"Candidate registered successfully.");
+            response = new Response(user,"Candidate registered successfully.");
             return ResponseEntity
                     .status(HttpStatus.CREATED)
                     .body(response);
