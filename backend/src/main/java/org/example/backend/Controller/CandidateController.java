@@ -57,8 +57,8 @@ public class CandidateController {
     }
 
     @DeleteMapping("/{id}")
-    public void deleteCandidate(@RequestBody int id) {
-        candidateService.deleteCandidate(id);
+    public ResponseEntity<Response> deleteCandidate(@RequestBody int id) {
+        return candidateService.deleteCandidate(id);
     }
 
 }

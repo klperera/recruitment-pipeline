@@ -102,8 +102,13 @@ public class CandidateService {
         }
     }
 
-    public void deleteCandidate(int id) {
+    public ResponseEntity<Response> deleteCandidate(int id) {
         candidateRepository.deleteById(id);
+        Response response = new Response(new Candidate(), "Deleting ID: " + id + " candidate.");
+        return ResponseEntity
+                .status(HttpStatus.NO_CONTENT)
+                .body(response);
+
     }
 
 }
