@@ -20,6 +20,11 @@ public class CandidateController {
         this.candidateService = candidateService;
     }
 
+    @GetMapping("/system")
+    public String candidateSystem() {
+        return "Candidate System";
+    }
+
     @GetMapping
     public List<Candidate> getAllCandidates(@RequestBody(required = false)Stage stage) {
         return stage == null? candidateService.getAllCandidates() : candidateService.getAllCandidatesByStage(stage);
