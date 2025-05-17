@@ -52,7 +52,7 @@ public class CandidateController {
     }
 
     @PutMapping("/{id}")
-    public Candidate updateCandidate(@RequestBody int id, @RequestBody Candidate updated) {
+    public ResponseEntity<Response> updateCandidate(@RequestBody int id, @RequestBody Candidate updated) {
         return candidateService.updateCandidate(id, updated);
     }
 

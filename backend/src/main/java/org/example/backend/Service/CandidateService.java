@@ -70,24 +70,36 @@ public class CandidateService {
         }
     }
 
-    public Candidate updateCandidate(int id, Candidate updated) {
+    public ResponseEntity<Response> updateCandidate(int id, Candidate updated) {
         Optional<Candidate> prevCandidate = candidateRepository.findById(id);
-        if (updated.getName() != null) {
-            prevCandidate.get().setName(updated.getName());
+        Response response;
+        if (prevCandidate.isPresent()) {
+            if (updated.getName() != null) {
+                prevCandidate.get().setName(updated.getName());
+            }
+            if (updated.getStage() != null) {
+                prevCandidate.get().setStage(updated.getStage());
+            }
+            if (updated.getScore() >= -1){
+                prevCandidate.get().setScore(updated.getScore());
+            }
+            if (updated.getReferral() != null){
+                prevCandidate.get().setReferral(updated.getReferral());
+            }
+            if (updated.getAssessment() != null) {
+                prevCandidate.get().setAssessment(updated.getAssessment());
+            }
+            candidateRepository.save(prevCandidate.get());
+            response = new Response(prevCandidate.get(),"Candidate updated successfully.");
+            return ResponseEntity
+                    .status(HttpStatus.OK)
+                    .body(response);
+        }else {
+            response = new Response(new Candidate(), "ID: " + id + " candidate not found");
+            return ResponseEntity
+                    .status(HttpStatus.NOT_FOUND)
+                    .body(response);
         }
-        if (updated.getStage() != null) {
-            prevCandidate.get().setStage(updated.getStage());
-        }
-        if (updated.getScore() != 0){
-            prevCandidate.get().setScore(updated.getScore());
-        }
-        if (updated.getReferral() != null){
-            prevCandidate.get().setReferral(updated.getReferral());
-        }
-        if (updated.getAssessment() != null) {
-            prevCandidate.get().setAssessment(updated.getAssessment());
-        }
-        return candidateRepository.save(prevCandidate.get());
     }
 
     public void deleteCandidate(int id) {
