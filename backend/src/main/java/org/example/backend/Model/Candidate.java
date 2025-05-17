@@ -1,29 +1,33 @@
 package org.example.backend.Model;
 
+
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
+
 
 @Entity
+@NoArgsConstructor
+@AllArgsConstructor
 public class Candidate {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private int candidateID;
 
     private String name;
-    @Enumerated(EnumType.STRING)
-    private Stage stage;
+    private String stage;
     private float score;
     private String referral;
     private String assessment;
 
-    public int getId() {
-        return id;
+    public int getCandidateID() {
+        return candidateID;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setCandidateID(int id) {
+        this.candidateID = id;
     }
-
     public String getName() {
         return name;
     }
@@ -32,11 +36,11 @@ public class Candidate {
         this.name = name;
     }
 
-    public Stage getStage() {
+    public String getStage() {
         return stage;
     }
 
-    public void setStage(Stage stage) {
+    public void setStage(String stage) {
         this.stage = stage;
     }
 

@@ -1,16 +1,20 @@
 package org.example.backend.Controller;
 
 import org.example.backend.Model.Candidate;
-import org.example.backend.Model.Stage;
+import org.example.backend.Model.Response;
 import org.example.backend.Service.CandidateService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+
 @RestController
 @RequestMapping("/candidates")
-@CrossOrigin(origins = "")
 public class CandidateController {
 
     private final CandidateService candidateService;
@@ -26,8 +30,13 @@ public class CandidateController {
     }
 
     @GetMapping
-    public List<Candidate> getAllCandidates(@RequestBody(required = false)Stage stage) {
-        return stage == null? candidateService.getAllCandidates() : candidateService.getAllCandidatesByStage(stage);
+    public List<Candidate> getAllCandidates(@RequestParam(required = false)String stage) {
+        if (stage != null) {
+            return candidateService.getAllCandidatesByStage(stage.toLowerCase());
+        }
+        else {
+            return candidateService.getAllCandidates();
+        }
     }
 
     @GetMapping("/{id}")
@@ -36,8 +45,10 @@ public class CandidateController {
     }
 
     @PostMapping
-    public Candidate createCandidate(@RequestBody Candidate candidate) {
+    public ResponseEntity<Response> createCandidate(@RequestBody Candidate candidate) {
+        candidate.setStage(candidate.getStage().toLowerCase());
         return candidateService.createCandidate(candidate);
+
     }
 
     @PutMapping("/{id}")
