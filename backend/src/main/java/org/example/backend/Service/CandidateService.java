@@ -26,18 +26,36 @@ public class CandidateService {
     }
 
     public Candidate getById(int id) {
-        return candidateRepository.findCandidateById(id);
+        return candidateRepository.findById(id);
     }
 
     public Candidate createCandidate(Candidate candidate) {
         return candidateRepository.save(candidate);
     }
 
-    public Candidate updateCandidate(Long id, Candidate updated) {
-        return null;
+    public Candidate updateCandidate(int id, Candidate updated) {
+        Candidate prevCandidate = candidateRepository.findById(id);
+        updated.setId(prevCandidate.getId());
+        if (updated.getName() != null) {
+            prevCandidate.setName(updated.getName());
+        }
+        if (updated.getStage() != null) {
+            prevCandidate.setStage(updated.getStage());
+        }
+        if (updated.getScore() != 0){
+            prevCandidate.setScore(updated.getScore());
+        }
+        if (updated.getReferral() != null){
+            prevCandidate.setReferral(updated.getReferral());
+        }
+        if (updated.getAssessment() != null) {
+            prevCandidate.setAssessment(updated.getAssessment());
+        }
+        return candidateRepository.save(prevCandidate);
     }
 
-    public void deleteCandidate(Long id) {
+    public void deleteCandidate(int id) {
+        candidateRepository.deleteById(id);
     }
 
 }

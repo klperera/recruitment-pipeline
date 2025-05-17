@@ -36,12 +36,12 @@ public class CandidateController {
     }
 
     @PutMapping("/{id}")
-    public Candidate updateCandidate(@RequestBody Long id, @RequestBody Candidate updated) {
+    public Candidate updateCandidate(@RequestBody int id, @RequestBody Candidate updated) {
         return candidateService.updateCandidate(id, updated);
     }
 
     @DeleteMapping("/{id}")
-    public void deleteCandidate(@RequestBody Long id) {
+    public void deleteCandidate(@RequestBody int id) {
         candidateService.deleteCandidate(id);
     }
 

@@ -11,5 +11,5 @@ import java.util.List;
 public interface CandidateRepository extends JpaRepository<Candidate, Integer> {
     List<Candidate> findAllByStage(Stage stage);
 
-    Candidate findCandidateById(int id);
+    Candidate findById(int id);
 }
