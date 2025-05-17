@@ -30,8 +30,8 @@ public class CandidateController {
     }
 
     @GetMapping
-    public List<Candidate> getAllCandidates(@RequestParam(required = false)String stage) {
-        if (stage != null) {
+    public ResponseEntity<Response> getAllCandidates(@RequestParam(required = false)String stage) {
+        if (stage.equalsIgnoreCase("Applying") ||  stage.equalsIgnoreCase("Screening") || stage.equalsIgnoreCase("Interview") || stage.equalsIgnoreCase("Test")) {
             return candidateService.getAllCandidatesByStage(stage.toLowerCase());
         }
         else {

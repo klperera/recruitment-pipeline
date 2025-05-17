@@ -22,13 +22,17 @@ public class CandidateService {
         this.candidateRepository = candidateRepository;
     }
 
-    public List<Candidate> getAllCandidates() {
-        System.out.println("Getting all candidates");
-        return candidateRepository.findAll();
+    public ResponseEntity<Response> getAllCandidates() {
+        Response response = new Response(candidateRepository.findAll(), "Getting all candidates");
+        return ResponseEntity
+                .status(HttpStatus.OK)
+                .body(response);
     }
-    public List<Candidate> getAllCandidatesByStage(String stage) {
-        System.out.println("stage is " + stage);
-        return candidateRepository.findAllByStage(stage);
+    public ResponseEntity<Response> getAllCandidatesByStage(String stage) {
+        Response response = new Response(candidateRepository.findAllByStage(stage), "Getting all " + stage +" candidates");
+        return ResponseEntity
+                .status(HttpStatus.OK)
+                .body(response);
     }
 
     public Candidate getById(int id) {
