@@ -3,6 +3,9 @@
     flex-direction: column;
     width: 100%;
     min-width: 280px;
+    background: #e8ebf0;
+    padding: 1rem 1.5rem;
+    border-radius: 2%;
 }
 
 .column-header {
@@ -19,20 +22,28 @@
     gap: 0.5rem;
 }
   
-.column-title.applying {
-    color: var(--applying-color);
+.column-title.applying span {
+    background-color: var(--applying-color);
+    padding: 0.1rem 0.5rem;
+    border-radius: 20px;
 }
   
-.column-title.screening {
-    color: var(--screening-color);
+.column-title.screening span {
+    background-color: var(--screening-color);
+    padding: 0.1rem 0.5rem;
+    border-radius: 20px;
 }
   
-.column-title.interview {
-    color: var(--interview-color);
+.column-title.interview span {
+    background-color: var(--interview-color);
+    padding: 0.1rem 0.5rem;
+    border-radius: 20px;
 }
   
-.column-title.test {
-    color: var(--test-color);
+.column-title.test span {
+    background-color: var(--test-color);
+    padding: 0.1rem 0.5rem;
+    border-radius: 20px;
 }
   
 .column-count {

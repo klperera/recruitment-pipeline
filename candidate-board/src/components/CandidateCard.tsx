@@ -27,7 +27,7 @@ function CandidateCard({ candidate }: any) {
             {candidate.score > 0 ? (
               <>
                 <span className="star">★</span>
-                <span>{candidate.score}Overall</span>
+                <span>{candidate.score} Overall</span>
               </>
             ) : (
               <div className="add-assessment">

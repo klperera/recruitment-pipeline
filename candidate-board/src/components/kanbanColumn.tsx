@@ -15,7 +15,7 @@ function KanbanColumn({ title, stage, candidates, count }: KanbanColumnProps) {
         <div className="column-header">
           <div className={`column-title ${stage}`}>
             <span>{title}</span>
-            <span className="column-count">{count}</span>
+            <div className="column-count">{count}</div>
           </div>
           <button className="column-detail">Details</button>
         </div>
