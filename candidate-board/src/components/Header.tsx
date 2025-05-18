@@ -13,7 +13,6 @@ function Header() {
         <div className="header-content">
           <div className="header-top">
             <h1 className="header-title">{job.position}</h1>
-            <div className="header-page-indicator"></div>
             <div className="header-actions">
               <button className="btn btn-primary">
                 <span>Share & Promote</span>

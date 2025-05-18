@@ -12,17 +12,12 @@
   display: flex;
   align-items: center;
   margin-bottom: 1rem;
+  justify-content: space-between;
 }
 
-.header-title {
-  font-size: 1.5rem;
-  font-weight: 600;
-  flex-grow: 1;
-}
-
-.header-page-indicator {
-  color: var(--muted);
-  margin-right: 1rem;
+.header-title { 
+  font-size: 2rem;
+  font-weight: 700;
 }
 
 .header-actions {
@@ -34,7 +29,7 @@
   display: flex;
   align-items: center;
   color: var(--muted);
-  font-size: 0.875rem;
+  font-size: 0.8rem;
 }
 
 .header-tag {
@@ -57,7 +52,7 @@
 }
 
 .header-separator {
-  margin: 0 0.75rem;
+  margin: 0 0.7rem;
 }
 
 .created-by {
