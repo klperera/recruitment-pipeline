@@ -1,7 +1,7 @@
 import "../css/CandidateCard.css";
 
 export interface candidate {
-  id: number;
+  id: string;
   name: string;
   stage: "applying" | "screening" | "interview" | "test";
   appliedDate: string;
