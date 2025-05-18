@@ -52,7 +52,6 @@ public class CandidateController {
     public ResponseEntity<Response> createCandidate(@RequestBody Candidate candidate) {
         candidate.setStage(candidate.getStage().toLowerCase());
         return candidateService.createCandidate(candidate);
-
     }
 
     @PutMapping
