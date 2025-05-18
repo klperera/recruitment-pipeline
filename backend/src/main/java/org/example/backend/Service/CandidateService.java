@@ -103,11 +103,23 @@ public class CandidateService {
     }
 
     public ResponseEntity<Response> deleteCandidate(int id) {
-        candidateRepository.deleteById(id);
-        Response response = new Response(new Candidate(), "Deleting ID: " + id + " candidate.");
-        return ResponseEntity
-                .status(HttpStatus.NO_CONTENT)
-                .body(response);
+        Optional<Candidate> candidate = candidateRepository.findById(id);
+        Response response;
+        if (candidate.isPresent()) {
+            candidateRepository.deleteById(id); 
+            response = new Response(new Candidate(), "Deleting ID: " + id + " candidate.");
+            return ResponseEntity
+                    .status(HttpStatus.NO_CONTENT)
+                    .body(response);
+        }
+        else {
+            response = new Response(new Candidate(), "ID: " + id + " candidate not found");
+            return ResponseEntity
+                    .status(HttpStatus.NOT_FOUND)
+                    .body(response);
+        }
+
+
 
     }
 
