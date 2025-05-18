@@ -14,23 +14,6 @@
   margin-bottom: 1rem;
 }
 
-.btn-back {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: none;
-  border: none;
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  cursor: pointer;
-  margin-right: 1rem;
-}
-
-.btn-back:hover {
-  background-color: rgba(0, 0, 0, 0.05);
-}
-
 .header-title {
   font-size: 1.5rem;
   font-weight: 600;

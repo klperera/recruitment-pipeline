@@ -12,8 +12,7 @@ function Header() {
       <div className="header">
         <div className="header-content">
           <div className="header-top">
-            <button className="btn-back"></button>
-            <h1 className="header-title">Job Title</h1>
+            <h1 className="header-title">{job.position}</h1>
             <div className="header-page-indicator"></div>
             <div className="header-actions">
               <button className="btn btn-primary">
