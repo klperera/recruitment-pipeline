@@ -5,6 +5,8 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
+
 
 @Entity
 @NoArgsConstructor
@@ -20,6 +22,7 @@ public class Candidate {
     private float score;
     private String referral;
     private String assessment;
+    private LocalDate applicationDate;
 
     public int getCandidateID() {
         return candidateID;
@@ -66,5 +69,18 @@ public class Candidate {
 
     public void setAssessment(String assessment) {
         this.assessment = assessment;
+    }
+
+    public LocalDate getApplicationDate() {
+        return applicationDate;
+    }
+
+    public void setApplicationDate(LocalDate applicationDate) {
+        this.applicationDate = applicationDate;
+    }
+
+    @PrePersist
+    public void prePersist() {
+        applicationDate = LocalDate.now();
     }
 }
