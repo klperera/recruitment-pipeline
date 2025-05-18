@@ -5,11 +5,12 @@ import org.example.backend.Model.Candidate;
 import org.example.backend.Model.Response;
 import org.example.backend.Repository.CandidateRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -22,14 +23,16 @@ public class CandidateService {
         this.candidateRepository = candidateRepository;
     }
 
-    public ResponseEntity<Response> getAllCandidates() {
-        Response response = new Response(candidateRepository.findAll(), "Getting all candidates");
+    public ResponseEntity<Response> getAllCandidates(int page, int size, String sortBy) {
+        Pageable pageable = PageRequest.of(page, size, Sort.by(sortBy).ascending());
+        Response response = new Response(candidateRepository.findAll(pageable), "Getting all candidates");
         return ResponseEntity
                 .status(HttpStatus.OK)
                 .body(response);
     }
-    public ResponseEntity<Response> getAllCandidatesByStage(String stage) {
-        Response response = new Response(candidateRepository.findAllByStage(stage), "Getting all " + stage +" candidates");
+    public ResponseEntity<Response> getAllCandidatesByStage(String stage, int page, int size, String sortBy) {
+        Pageable pageable = PageRequest.of(page, size, Sort.by(sortBy).ascending());
+        Response response = new Response(candidateRepository.findAllByStage(stage, pageable), "Getting all " + stage +" candidates");
         return ResponseEntity
                 .status(HttpStatus.OK)
                 .body(response);
@@ -106,7 +109,7 @@ public class CandidateService {
         Optional<Candidate> candidate = candidateRepository.findById(id);
         Response response;
         if (candidate.isPresent()) {
-            candidateRepository.deleteById(id); 
+            candidateRepository.deleteById(id);
             response = new Response(new Candidate(), "Deleting ID: " + id + " candidate.");
             return ResponseEntity
                     .status(HttpStatus.NO_CONTENT)

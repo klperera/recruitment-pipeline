@@ -4,6 +4,7 @@ import org.example.backend.Model.Candidate;
 import org.example.backend.Model.Response;
 import org.example.backend.Service.CandidateService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -24,12 +25,21 @@ public class CandidateController {
     }
 
     @GetMapping
-    public ResponseEntity<Response> getAllCandidates(@RequestParam(required = false)String stage) {
-        if (stage.equalsIgnoreCase("Applying") ||  stage.equalsIgnoreCase("Screening") || stage.equalsIgnoreCase("Interview") || stage.equalsIgnoreCase("Test")) {
-            return candidateService.getAllCandidatesByStage(stage.toLowerCase());
-        }
-        else {
-            return candidateService.getAllCandidates();
+    public ResponseEntity<Response> getAllCandidates(
+            @RequestParam(required = false)String stage,
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "10") int size,
+            @RequestParam(defaultValue = "candidateID") String sortBy
+    ) {
+        if (stage == null) {
+            return candidateService.getAllCandidates(page, size, sortBy);
+        } else if (stage.equalsIgnoreCase("Applying") ||  stage.equalsIgnoreCase("Screening") || stage.equalsIgnoreCase("Interview") || stage.equalsIgnoreCase("Test")) {
+            return candidateService.getAllCandidatesByStage(stage.toLowerCase(), page, size, sortBy);
+        }else {
+            Response response = new Response("Invalid stage.");
+            return ResponseEntity
+                    .status(HttpStatus.BAD_REQUEST)
+                    .body(response);
         }
     }
 

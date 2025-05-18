@@ -16,6 +16,10 @@ public class Response {
         this.message = message;
     }
 
+    public Response(String message) {
+        this.message = message;
+    }
+
     public Object getObject() {
         return object;
     }
