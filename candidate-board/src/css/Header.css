@@ -1,0 +1,143 @@
+.header {
+  padding: 1.5rem 2rem 0;
+  background-color: white;
+  border-bottom: 2px solid var(--border-color);
+}
+
+.header-content {
+  padding-bottom: 1.5rem;
+}
+
+.header-top {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.btn-back {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  cursor: pointer;
+  margin-right: 1rem;
+}
+
+.btn-back:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.header-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  flex-grow: 1;
+}
+
+.header-page-indicator {
+  color: var(--muted);
+  margin-right: 1rem;
+}
+
+.header-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.header-details {
+  display: flex;
+  align-items: center;
+  color: var(--muted);
+  font-size: 0.875rem;
+}
+
+.header-tag {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  background-color: #ecfdf5;
+  color: #059669;
+  font-weight: 500;
+  padding: 0.25rem 0.5rem;
+  border-radius: 999px;
+}
+
+.status-indicator {
+  width: 8px;
+  height: 8px;
+  background-color: #059669;
+  border-radius: 50%;
+  margin-right: 0.25rem;
+}
+
+.header-separator {
+  margin: 0 0.75rem;
+}
+
+.created-by {
+  color: var(--primary);
+  font-weight: 500;
+}
+
+.nav-tabs {
+  display: flex;
+  overflow-x: auto;
+  gap: 1rem;
+}
+
+.nav-tab {
+  display: flex;
+  align-items: center;
+  padding: 0.75rem 0;
+  border: none;
+  background: transparent;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--muted);
+  cursor: pointer;
+  position: relative;
+  white-space: nowrap;
+}
+
+.nav-tab.active {
+  color: var(--primary);
+  font-weight: 600;
+}
+
+.nav-tab.active::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background-color: var(--primary);
+}
+
+@media (max-width: 768px) {
+  .header {
+    padding: 1rem;
+  }
+  
+  .header-top {
+    flex-wrap: wrap;
+  }
+  
+  .header-actions {
+    margin-top: 1rem;
+    width: 100%;
+    justify-content: flex-end;
+  }
+  
+  .header-details {
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  
+  .header-separator {
+    display: none;
+  }
+}
