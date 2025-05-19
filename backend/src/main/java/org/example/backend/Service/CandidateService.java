@@ -83,15 +83,13 @@ public class CandidateService {
             if (updated.getStage() != null) {
                 prevCandidate.get().setStage(updated.getStage());
             }
-            if (updated.getScore() >= -1){
+            if (updated.getScore() > 0){
                 prevCandidate.get().setScore(updated.getScore());
-            }
-            if (updated.getReferral() != null){
-                prevCandidate.get().setReferral(updated.getReferral());
             }
             if (updated.getAssessment() != null) {
                 prevCandidate.get().setAssessment(updated.getAssessment());
             }
+            prevCandidate.get().setReferral(updated.isReferral());
             candidateRepository.save(prevCandidate.get());
             response = new Response(prevCandidate.get(),"Candidate updated successfully.");
             return ResponseEntity

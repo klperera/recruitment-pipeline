@@ -20,7 +20,7 @@ public class Candidate {
     private String name;
     private String stage;
     private float score;
-    private String referral;
+    private boolean referral;
     private String assessment;
     private LocalDate applicationDate;
 
@@ -28,9 +28,10 @@ public class Candidate {
         return candidateID;
     }
 
-    public void setCandidateID(int id) {
-        this.candidateID = id;
+    public void setCandidateID(int candidateID) {
+        this.candidateID = candidateID;
     }
+
     public String getName() {
         return name;
     }
@@ -55,11 +56,11 @@ public class Candidate {
         this.score = score;
     }
 
-    public String getReferral() {
+    public boolean isReferral() {
         return referral;
     }
 
-    public void setReferral(String referral) {
+    public void setReferral(boolean referral) {
         this.referral = referral;
     }
 
