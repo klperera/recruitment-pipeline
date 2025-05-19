@@ -1,0 +1,15 @@
+.kanban-board {
+    display: flex;
+    gap: 1.5rem;
+    padding: 1.5rem 2rem;
+    overflow-x: auto;
+    min-height: calc(100vh - 180px);
+  }
+  
+  @media (max-width: 768px) {
+    .kanban-board {
+      padding: 1rem;
+      flex-direction: column;
+      gap: 2rem;
+    }
+  }
