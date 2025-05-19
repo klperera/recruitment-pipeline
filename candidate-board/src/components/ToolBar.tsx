@@ -1,4 +1,5 @@
 import "../css/ToolBar.css";
+import { Link } from "react-router-dom";
 
 function ToolrBar() {
   return (
@@ -23,6 +24,9 @@ function ToolrBar() {
         </div>
 
         <div className="toolbar-right">
+          <Link to="/addCandidates" className="btn btn-secondary">
+            Add Candidate
+          </Link>
           <button className="filter-btn">
             <span>Filter People</span>
           </button>

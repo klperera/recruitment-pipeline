@@ -1,14 +1,15 @@
 import "./css/App.css";
-import Header from "./components/Header";
-import ToolBar from "./components/ToolBar";
-import KanbanBoard from "./components/KanbanBoard";
+import AddCandidates from "./pages/addCandidate";
+import { Route, Routes } from "react-router-dom";
+import HomePage from "./pages/HomePage";
 
 function App() {
   return (
     <>
-      <Header></Header>
-      <ToolBar></ToolBar>
-      <KanbanBoard></KanbanBoard>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/addCandidates" element={<AddCandidates />} />
+      </Routes>
     </>
   );
 }
