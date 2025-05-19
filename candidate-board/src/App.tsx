@@ -1,5 +1,5 @@
 import "./css/App.css";
-import AddCandidates from "./pages/addCandidate";
+import AddCandidates from "./pages/AddCandidate";
 import { Route, Routes } from "react-router-dom";
 import HomePage from "./pages/HomePage";
 
